@@ -23,7 +23,7 @@ def main():
         train_ppo(env, model)
     elif args.algo == "dpo":
         print("Training using DPO...")
-        # Create a reference model using the same ActorCritic (do not re-import locally)
+        # Create a reference model using the same ActorCritic 
         ref_model = ActorCritic(state_dim=1, action_dim=2)
         ref_model.load_state_dict(model.state_dict())
         # Freeze the reference model parameters.
