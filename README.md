@@ -32,12 +32,6 @@ python main.py --algo grpo
   - **Actions:** Two actions (move left or right).  
   - **Reward:** -1 when reaching the left boundary and +1 when reaching the right boundary.
 
-- **Grid Environment (grid_env.py):**  
-  A grid world where the agent navigates a 5×5 grid with obstacles.  
-  - **State:** A 2D vector \([row,\, col]\).  
-  - **Actions:** Four actions (up, right, down, left).  
-  - **Reward:** -1 per step and +10 for reaching the goal. Obstacles prevent movement into certain cells.
-
 ## Algorithms
 
 - **PPO (Proximal Policy Optimization) (ppo.py):**  
