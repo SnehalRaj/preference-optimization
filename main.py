@@ -15,6 +15,7 @@ def main():
     args = parser.parse_args()
     
     env = ToyEnv(size=5)
+    # Create the model using the globally imported ActorCritic.
     model = ActorCritic(state_dim=1, action_dim=2)
     
     if args.algo == "ppo":
@@ -22,10 +23,10 @@ def main():
         train_ppo(env, model)
     elif args.algo == "dpo":
         print("Training using DPO...")
-        # For DPO, create a reference model as a frozen copy of the initial model.
-        from models import ActorCritic
+        # Create a reference model using the same ActorCritic (do not re-import locally)
         ref_model = ActorCritic(state_dim=1, action_dim=2)
         ref_model.load_state_dict(model.state_dict())
+        # Freeze the reference model parameters.
         for param in ref_model.parameters():
             param.requires_grad = False
         train_dpo(env, model, ref_model)
