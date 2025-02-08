@@ -51,9 +51,8 @@ python main.py --algo grpo
 - **DPO (Direct Preference Optimization) (dpo.py):**  
   Directly optimizes preference alignment by comparing pairs of trajectories using a binary cross-entropy–style loss.  
   - **Key Equation:**  
-    $\[
-    \mathcal{L}_{\text{DPO}} = -\beta \log \sigma\Big(\big[\log \pi_\theta(y_u|x) - \log \pi_{\text{ref}}(y_u|x)\big] - \big[\log \pi_\theta(y_l|x) - \log \pi_{\text{ref}}(y_l|x)\big]\Big),
-    \]$
+$\[\mathcal{L}_{\text{DPO}} = -\beta \log \sigma\Big(\big[\log \pi_\theta(y_u|x) - \log \pi_{\text{ref}}(y_u|x)\big] - \big[\log \pi_\theta(y_l|x) - \log \pi_{\text{ref}}(y_l|x)\big]\Big)$$
+
     where $\( y_u \)$ and $\( y_l \)$ are the preferred and less‑preferred responses, and $\(\pi_{\text{ref}}\)$ is a frozen reference model.
 
 - **GRPO (Group Relative Policy Optimization) (grpo.py):**  
@@ -65,7 +64,7 @@ python main.py --algo grpo
       \]$
       where $\( R_i \)$ is the total reward for trajectory $\( i \)$, and $\(\mu_{\mathcal{G}}\)$ and $\(\sigma_{\mathcal{G}}\)$ are the mean and standard deviation over the group.
     - **Trajectory‑level Clipped Loss:**  
-     $ \[
+     $\[
       L^{\text{GRPO}}(\theta) = -\frac{1}{N} \sum_{i=1}^{N} \min\left(r_i A_i,\, \text{clip}(r_i,\, 1-\epsilon,\, 1+\epsilon) A_i\right),
       \]$
       where $\( r_i = \exp\big(\text{log\_prob}_{\text{new}} - \text{log\_prob}_{\text{old}}\big) \)$.
